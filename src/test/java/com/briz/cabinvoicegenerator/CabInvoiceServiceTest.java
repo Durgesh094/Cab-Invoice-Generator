@@ -1,5 +1,7 @@
 package com.briz.cabinvoicegenerator;
 
+import model.InvoiceSummary;
+import model.Ride;
 import org.junit.Assert;
 import org.junit.Test;
 import service.InvoiceService;
@@ -25,4 +27,16 @@ public class CabInvoiceServiceTest {
         double totalFare = invoiceService.calculateFare(0.1, 1);
         Assert.assertEquals(5, totalFare, 0.0);
     }
+
+    @Test
+    public void givenMultipleRides_whenCalculateFare_ShouldReturnAggregateTotalFare() {
+        InvoiceService invoiceService = new InvoiceService();
+        Ride[] rides = {new Ride(2.0, 5),
+                new Ride(1.0, 5),
+                new Ride(0.1, 1)};
+        InvoiceSummary expectedSummary = new InvoiceSummary(3, 45);
+        InvoiceSummary summary = invoiceService.calculateFare(rides);
+        Assert.assertEquals(expectedSummary, summary);
+    }
+
 }
