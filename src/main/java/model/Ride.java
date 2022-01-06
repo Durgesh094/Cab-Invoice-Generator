@@ -3,10 +3,12 @@ package model;
 public class Ride {
     private double distance;
     private int time;
+    private String id;
 
-    public Ride(double distance, int time) {
+    public Ride(double distance, int time, String id) {
         this.distance = distance;
         this.time = time;
+        this.id = id;
     }
 
     public double getDistance() {
@@ -23,5 +25,13 @@ public class Ride {
 
     public void setTime(int time) {
         this.time = time;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

@@ -14,13 +14,12 @@ public class InvoiceService {
         return Math.max(totalFare, MIN_FARE);
     }
 
-    public InvoiceSummary calculateFare(Ride[] rides) {
+    public InvoiceSummary calculateNumberOfRides(Ride[] rides, String id) {
         double totalFare = 0.0;
         for (Ride ride : rides) {
-            totalFare += calculateFare(ride.getDistance(), ride.getTime());
+            totalFare += this.calculateFare(ride.getDistance(), ride.getTime());
         }
-        System.out.println("length " + rides.length + " fare" + totalFare);
-        return new InvoiceSummary(rides.length, totalFare);
+        return new InvoiceSummary(id, totalFare);
     }
 }
 
